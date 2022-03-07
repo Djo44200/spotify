@@ -2,6 +2,7 @@
   <div class="search-ctn">
     <div class="search-input">
       <div class="input-group">
+        <!-- INPUT SEARCH -->
         <input
           type="text"
           class="form-control"
@@ -11,6 +12,7 @@
           v-model="search"
         />
       </div>
+        <!-- VALIDATE BUTTON -->
       <button
         type="button"
         class="btn btn-primary"
@@ -21,6 +23,7 @@
       </button>
     </div>
     <div class="form-ctn">
+        <!-- FIRST BUTTON RADIO -->
       <div class="form-check">
         <input
           class="form-check-input"
@@ -30,9 +33,10 @@
           @click="clickRadioButton(enumRadioBtn.ALBUM)"
         />
         <label class="form-check-label" for="flexRadioDefault1">
-          Recherche par Album
+           {{turpleRadioText[0]}}
         </label>
       </div>
+        <!-- SECOND BUTTON RADIO -->      
       <div class="form-check">
         <input
           class="form-check-input"
@@ -42,7 +46,7 @@
           @click="clickRadioButton(enumRadioBtn.ARTIST)"
         />
         <label class="form-check-label" for="flexRadioDefault2">
-          Recherche par Artiste
+          {{turpleRadioText[1]}}
         </label>
       </div>
     </div>
@@ -52,10 +56,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 enum RADIO_BTN {
-  ALBUM = "ALBUM",
-  ARTIST = "ARTIST",
-  NONE = "NONE",
+  ALBUM,
+  ARTIST,
+  NONE,
 }
+
 
 export default defineComponent({
   data() {
@@ -63,11 +68,12 @@ export default defineComponent({
       enumRadioBtn: RADIO_BTN,
       search: "",
       radioBtnValue: RADIO_BTN.NONE,
+      turpleRadioText : ['Recherche par Album','Recherche par Artiste']
     };
   },
   methods: {
     //Récupère la valeur du bouton radio
-    clickRadioButton(isSelected: string) {
+    clickRadioButton(isSelected: RADIO_BTN) {
       this.radioBtnValue =
         isSelected === RADIO_BTN.ALBUM ? RADIO_BTN.ALBUM : RADIO_BTN.ARTIST;
     },

@@ -12,78 +12,52 @@
           v-model="search"
         />
       </div>
-        <!-- VALIDATE BUTTON -->
+      <!-- VALIDATE BUTTON -->
       <button
         type="button"
-        class="btn btn-primary"
+        class="btn"
         :class="{ disabled: isDisabled }"
         @click="clickValidate()"
       >
         Valider
       </button>
     </div>
-    <div class="form-ctn">
-        <!-- FIRST BUTTON RADIO -->
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault1"
-          @click="clickRadioButton(enumRadioBtn.ALBUM)"
-        />
-        <label class="form-check-label" for="flexRadioDefault1">
-           {{turpleRadioText[0]}}
-        </label>
-      </div>
-        <!-- SECOND BUTTON RADIO -->      
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
-          @click="clickRadioButton(enumRadioBtn.ARTIST)"
-        />
-        <label class="form-check-label" for="flexRadioDefault2">
-          {{turpleRadioText[1]}}
-        </label>
-      </div>
-    </div>
   </div>
 </template>
 
 <script lang="ts">
+import AuthService from "@/services/AuthService";
+import SearchService from "@/services/SearchService";
+import { getToken } from "@/services/spotifyAuth";
+
 import { defineComponent } from "vue";
-enum RADIO_BTN {
-  ALBUM,
-  ARTIST,
-  NONE,
-}
 
 
 export default defineComponent({
+  
   data() {
     return {
-      enumRadioBtn: RADIO_BTN,
       search: "",
-      radioBtnValue: RADIO_BTN.NONE,
-      turpleRadioText : ['Recherche par Album','Recherche par Artiste']
+      turpleRadioText: ["Recherche par Album", "Recherche par Artiste"],
     };
   },
   methods: {
-    //Récupère la valeur du bouton radio
-    clickRadioButton(isSelected: RADIO_BTN) {
-      this.radioBtnValue =
-        isSelected === RADIO_BTN.ALBUM ? RADIO_BTN.ALBUM : RADIO_BTN.ARTIST;
-    },
     //Valide la saisie + Appel API
-    clickValidate() {},
+    async clickValidate() {
+        const clientId = import.meta.env.SPOTIFY_API_ID;
+    const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+    const token = await getToken(clientId, clientSecret);
+    console.log('clientId',clientId);
+    
+    // const token = await getToken(clientId, clientSecret);
+      // AuthService.connexion();
+      // SearchService.getSearch(this.search)
+    },
   },
   computed: {
     //Vérification des champs
     isDisabled(): boolean {
-      return this.radioBtnValue === RADIO_BTN.NONE || this.search.length === 0;
+      return this.search.length === 0;
     },
   },
 });
@@ -107,9 +81,9 @@ export default defineComponent({
 .input-group {
   margin-right: 2rem;
 }
-.form-ctn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.btn{
+  color: white!important;
+  background-color: #1ED760!important;
+  border-radius: 500px!important;
 }
 </style>

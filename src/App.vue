@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <app-header :title="'SPOTIFY'" />
+  <main class="main">
+    <app-header :title="'DEV'" />
     <search />
   </main>
 </template>
@@ -11,18 +11,22 @@ import { onMounted } from "vue";
 import store from "./store";
 
 onMounted(() => {
-  if (store.state.isAuthenticated) {
-    console.log("mounted in the composition api!", store.state.isAuthenticated);
+  if (!store.state.isAuthenticated) {
+    //Permettre de s'authentifier
   }
 });
+
 </script>
 <style>
 @import "./assets/base.css";
 #app {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 1rem;
+  background-color: #181818;
+  color: white;
 }
+
 .title {
   display: flex;
   width: 100%;

@@ -11,13 +11,17 @@
   "dependencies": {
     "axios": "^0.26.0",
     "bootstrap": "^5.1.3",
+    "buffer": "^6.0.3",
+    "dotenv": "^16.0.0",
+    "qs": "^6.10.3",
     "vue": "^3.2.31",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/bootstrap": "^5.1.9",
-    "@types/node": "^16.11.25",
+    "@types/node": "^16.11.26",
+    "@types/qs": "^6.9.7",
     "@vitejs/plugin-vue": "^2.2.2",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",

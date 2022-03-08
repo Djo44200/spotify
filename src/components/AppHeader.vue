@@ -1,11 +1,13 @@
 <template>
   <div class="header-ctn">
+    <img  class="logo" :src="spotifyLogo" alt="my-logo" />
     <span class="title">{{ title }}</span>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import spotifyLogo from "@/assets/SpotifyLogo.svg";
 enum RADIO_BTN {
   ALBUM = "ALBUM",
   ARTIST = "ARTIST",
@@ -14,7 +16,7 @@ enum RADIO_BTN {
 
 export default defineComponent({
   data() {
-    return {};
+    return {spotifyLogo};
   },
   props: { title: String },
   methods: {},
@@ -30,5 +32,8 @@ export default defineComponent({
   height: 100%;
   align-items: center;
   justify-content: center;
+}
+.logo{
+  width:240px;
 }
 </style>

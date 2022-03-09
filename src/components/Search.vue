@@ -23,7 +23,19 @@
       </button>
     </div>
     <div class="tracks-items">
-      <div v-for="(track, index) in tracksItems" :key="index">coucou</div>
+      <div v-for="(track, index) in tracksItems" :key="index">
+        <div class="card">
+          <img :src="track.images[1].url" class="card-img-top" alt="image" />
+          <div class="card-body">
+            <p class="card-title">
+              {{ track.name }}
+            </p>
+            <p class="card-resume">
+              Durée : {{ track.duree }} - Date de sortie : {{ track.date }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -82,5 +94,33 @@ export default defineComponent({
   color: white !important;
   background-color: #1ed760 !important;
   border-radius: 500px !important;
+}
+.tracks-items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  background: #181818 !important;
+  padding: 16px;
+  width: 15rem;
+}
+.card-title {
+  display: flex;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #fff;
+}
+.card-resume {
+  display: flex;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  color: #6a6a6a;
 }
 </style>

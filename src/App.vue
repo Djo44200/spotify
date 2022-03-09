@@ -20,7 +20,7 @@ onMounted(() => {
 @import "./assets/base.css";
 #app {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding: 1rem;
   background-color: #181818;
   color: white;

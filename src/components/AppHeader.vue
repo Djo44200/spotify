@@ -1,6 +1,6 @@
 <template>
   <div class="header-ctn">
-    <img  class="logo" :src="spotifyLogo" alt="my-logo" />
+    <img class="logo" :src="spotifyLogo" alt="my-logo" />
     <span class="title">{{ title }}</span>
   </div>
 </template>
@@ -16,7 +16,7 @@ enum RADIO_BTN {
 
 export default defineComponent({
   data() {
-    return {spotifyLogo};
+    return { spotifyLogo };
   },
   props: { title: String },
   methods: {},
@@ -33,7 +33,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
 }
-.logo{
-  width:240px;
+.logo {
+  width: 240px;
 }
 </style>

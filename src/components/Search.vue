@@ -32,9 +32,7 @@ import { getToken } from "@/services/spotifyAuth";
 
 import { defineComponent } from "vue";
 
-
 export default defineComponent({
-  
   data() {
     return {
       search: "",
@@ -44,12 +42,12 @@ export default defineComponent({
   methods: {
     //Valide la saisie + Appel API
     async clickValidate() {
-        const clientId = import.meta.env.SPOTIFY_API_ID;
-    const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
-    const token = await getToken(clientId, clientSecret);
-    console.log('clientId',clientId);
-    
-    // const token = await getToken(clientId, clientSecret);
+      const clientId = import.meta.env.SPOTIFY_API_ID;
+      const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+      const token = await getToken(clientId, clientSecret);
+      console.log("clientId", clientId);
+
+      // const token = await getToken(clientId, clientSecret);
       // AuthService.connexion();
       // SearchService.getSearch(this.search)
     },
@@ -81,9 +79,9 @@ export default defineComponent({
 .input-group {
   margin-right: 2rem;
 }
-.btn{
-  color: white!important;
-  background-color: #1ED760!important;
-  border-radius: 500px!important;
+.btn {
+  color: white !important;
+  background-color: #1ed760 !important;
+  border-radius: 500px !important;
 }
 </style>

@@ -15,7 +15,6 @@ onMounted(() => {
     //Permettre de s'authentifier
   }
 });
-
 </script>
 <style>
 @import "./assets/base.css";

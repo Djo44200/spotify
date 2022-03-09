@@ -47,6 +47,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style>
 @import "./assets/base.css";
 #app {

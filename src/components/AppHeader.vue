@@ -8,11 +8,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import spotifyLogo from "@/assets/SpotifyLogo.svg";
-enum RADIO_BTN {
-  ALBUM = "ALBUM",
-  ARTIST = "ARTIST",
-  NONE = "NONE",
-}
 
 export default defineComponent({
   data() {

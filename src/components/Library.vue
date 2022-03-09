@@ -1,6 +1,6 @@
 <template>
   <div class="library-ctn">
-    <span class="title">Bibliothèque</span>
+    <span class="title">BIBLIOTHEQUE</span>
     <card :buttonAdd="false" :tracksItems="lists" />
   </div>
 </template>

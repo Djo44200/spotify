@@ -4,7 +4,7 @@
       <div v-for="(track, index) in tracksItems" :key="index">
         <!-- Mise en place d'une carte pour l'affichage -->
         <div class="card">
-          <img :src="track.images[1].url" class="card-img-top" alt="image" />
+          <a :href="track.url" target="_blank"><img :src="track.images[1].url" class="card-img-top" alt="image" /></a>
           <!-- Bouton d'ajout -->
           <button
             v-if="buttonAdd"
@@ -65,6 +65,7 @@ export default defineComponent({
     },
 
     convertDate(date: string) {
+        //Convertion de date en format JJ/MM/AAAA
       const dateConvert = new Date(date);
       return dayjs(dateConvert).format("DD/MM/YYYY");
     },

@@ -21,7 +21,7 @@ interface TracksType {
   offset: number;
   previous: string;
   total: number;
-  items: [];
+  items: any[];
 }
 interface ArtistsType {
   href: string;

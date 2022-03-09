@@ -1,5 +1,7 @@
+import type { AlbumType } from "./AlbumType";
+
 interface LibraryStateProps {
-  lists: any[];
+  lists: AlbumType[];
 }
 
 export { LibraryStateProps };

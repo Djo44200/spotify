@@ -1,9 +1,5 @@
 import type { AlbumType } from "@/models/AlbumType";
-import type {
-  SearchStateProps,
-  SearchType,
-  Response,
-} from "@/models/SearchTypes";
+import type { SearchStateProps, Response } from "@/models/SearchTypes";
 
 const setSearch = (state: SearchStateProps, profiles: Response) => {
   if (profiles) {
@@ -18,6 +14,7 @@ const setSearch = (state: SearchStateProps, profiles: Response) => {
         images: track.album.images,
         duree: track.duration_ms,
         date: track.album.release_date,
+        url: track.album.external_urls.spotify,
       };
       albumArray.push(album);
       state.tracks = albumArray;

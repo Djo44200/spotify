@@ -5,6 +5,7 @@ import * as AppActions from "./appActions";
 import * as AppGetters from "./appGetters";
 
 import Search from "@/store/modules/search";
+import Library from "@/store/modules/library";
 
 const storeStateProps: any = {
   isAuthenticated: false,
@@ -20,6 +21,7 @@ export default new Vuex.Store({
   },
   modules: {
     search: Search,
+    library: Library,
   },
   getters: {
     ...AppGetters,

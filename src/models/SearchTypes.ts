@@ -1,12 +1,12 @@
 import type { AlbumType } from "./AlbumType";
 
 interface SearchStateProps {
-  artists: any[];
-  tracks: any[];
+  artists: [];
+  tracks: AlbumType[];
 }
 
 interface SearchType {
-  artists: any[];
+  artists: [];
   tracks: AlbumType[];
 }
 
@@ -21,7 +21,7 @@ interface TracksType {
   offset: number;
   previous: string;
   total: number;
-  items: any[];
+  items: [];
 }
 interface ArtistsType {
   href: string;
@@ -30,6 +30,6 @@ interface ArtistsType {
   offset: number;
   previous: string;
   total: number;
-  items: any[];
+  items: [];
 }
 export { SearchStateProps, SearchType, Response };

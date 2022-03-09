@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const client_id = "e5e4811acf954507b1b4a18856327089"; // Your client id
-const client_secret = "a2cdd952897946119a8c7c430bdf324c"; // Your secret
+const client_id = ""; // Your client id
+const client_secret = ""; // Your secret
 
 const clientAPI = (url: string, params?: any) =>
   axios.create({

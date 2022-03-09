@@ -1,5 +1,8 @@
+import type { SearchStateProps } from "@/models/SearchTypes";
 
-
-
-export {
+const getAlbums = (state: SearchStateProps) => {
+  const { tracks } = state;
+  return tracks;
 };
+
+export { getAlbums };

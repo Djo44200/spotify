@@ -22,15 +22,18 @@
         Valider
       </button>
     </div>
+    <div class="tracks-items">
+      <div v-for="(track, index) in tracksItems" :key="index">coucou</div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-
 import SearchService from "@/services/SearchService";
 import { getToken } from "@/services/spotifyAuth";
 
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   data() {
@@ -42,7 +45,7 @@ export default defineComponent({
   methods: {
     //Valide la saisie + Appel API
     async clickValidate() {
-     this.$store.dispatch('loadSearch',this.search);
+      this.$store.dispatch("search/loadSearch", this.search);
     },
   },
   computed: {
@@ -50,6 +53,9 @@ export default defineComponent({
     isDisabled(): boolean {
       return this.search.length === 0;
     },
+    ...mapGetters({
+      tracksItems: "search/getAlbums",
+    }),
   },
 });
 </script>

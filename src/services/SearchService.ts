@@ -1,5 +1,5 @@
 import clientAPI from "./AxiosConfig";
-import mock from '../../mock/mock.json'
+import mock from "../../mock/mock.json";
 const api = "https://api.spotify.com/v1";
 const params: any = {
   q: "",
@@ -18,7 +18,7 @@ export default class SearchService {
     // const result = clientAPI(api, params).get("/search").then((response: any) => {
     //   return response.data;
     // });
-    
-		return mock;
-	}
-};
+
+    return mock;
+  }
+}

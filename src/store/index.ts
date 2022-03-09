@@ -4,8 +4,7 @@ import * as AppMutations from "./appMutations";
 import * as AppActions from "./appActions";
 import * as AppGetters from "./appGetters";
 
-import Search from '@/store/modules/search';
-
+import Search from "@/store/modules/search";
 
 const storeStateProps: any = {
   isAuthenticated: false,

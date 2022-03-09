@@ -7,5 +7,5 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const app = createApp(App);
 app.config.globalProperties.axios = axios;
-app.mount("#app");
 app.use(store);
+app.mount("#app");

@@ -1,4 +1,4 @@
-import { Store } from '@/store';// path to store file
+import { Store } from "@/store"; // path to store file
 
 declare module "*.vue" {
   import Vue from "vue";
@@ -8,7 +8,7 @@ declare module "*.vue" {
 
 declare module "qs";
 
-declare module '@vue/runtime-core' {
+declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
     $store: Store;
   }

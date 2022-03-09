@@ -6,7 +6,12 @@
         <div class="card">
           <img :src="track.images[1].url" class="card-img-top" alt="image" />
           <!-- Bouton d'ajout -->
-          <button type="button" class="btn btn-add" @click="addLibrary(track)">
+          <button
+            v-if="buttonAdd"
+            type="button"
+            class="btn btn-add"
+            @click="addLibrary(track)"
+          >
             <span>+</span>
           </button>
           <div class="card-body">
@@ -30,7 +35,7 @@ import dayjs from "dayjs";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: ["tracksItems"],
+  props: ["tracksItems", "buttonAdd"],
   methods: {
     addLibrary(track: AlbumType) {
       this.$emit("onTrack", track);

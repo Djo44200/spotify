@@ -4,9 +4,11 @@ import * as AppMutations from "./appMutations";
 import * as AppActions from "./appActions";
 import * as AppGetters from "./appGetters";
 
+import Search from '@/store/modules/search';
+
+
 const storeStateProps: any = {
   isAuthenticated: false,
-  updatedAt: new Date(0),
 };
 
 export default new Vuex.Store({
@@ -17,7 +19,9 @@ export default new Vuex.Store({
   actions: {
     ...AppActions,
   },
-  modules: {},
+  modules: {
+    search: Search,
+  },
   getters: {
     ...AppGetters,
   },

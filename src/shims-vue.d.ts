@@ -1,15 +1,18 @@
+import { Store } from '@/store';// path to store file
+
 declare module "*.vue" {
   import Vue from "vue";
 
   export default Vue;
 }
 
-declare module "video.js";
-declare module "vue-tag-commander";
-declare module "pdfjs-dist";
 declare module "qs";
-declare module "vue-virtual-scroller";
-// declare module 'graphql/error/GraphQLError';
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $store: Store;
+  }
+}
 declare module "graphql/language/ast" {
   export type DocumentNode = any;
 }

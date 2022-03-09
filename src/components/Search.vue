@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import AuthService from "@/services/AuthService";
+
 import SearchService from "@/services/SearchService";
 import { getToken } from "@/services/spotifyAuth";
 
@@ -42,14 +42,7 @@ export default defineComponent({
   methods: {
     //Valide la saisie + Appel API
     async clickValidate() {
-      const clientId = import.meta.env.SPOTIFY_API_ID;
-      const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
-      const token = await getToken(clientId, clientSecret);
-      console.log("clientId", clientId);
-
-      // const token = await getToken(clientId, clientSecret);
-      // AuthService.connexion();
-      // SearchService.getSearch(this.search)
+     this.$store.dispatch('loadSearch',this.search);
     },
   },
   computed: {

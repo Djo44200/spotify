@@ -10,17 +10,18 @@
             v-if="buttonAdd"
             type="button"
             class="btn btn-add"
+            :class="{'none-btn':addAlbum(track)}"
             @click="addLibrary(track)"
           >
-            <span>+</span>
+          <img :src="checkLogo" alt="Bootstrap" width="32" height="32">
           </button>
           <div class="card-body">
             <p class="card-title">
               {{ track.name }}
             </p>
             <p class="card-resume">
-              Durée : {{ convertMsToTime(track.duree) }} - Date de sortie :
-              {{ convertDate(track.date) }}
+              <span>Durée : {{ convertMsToTime(track.duree) }}</span>
+              <span>Date de sortie :{{ convertDate(track.date) }}</span>
             </p>
           </div>
         </div>
@@ -33,12 +34,25 @@
 import type { AlbumType } from "@/models/AlbumType";
 import dayjs from "dayjs";
 import { defineComponent } from "vue";
+import checkLogo from "@/assets/img/check-lg.svg";
 
 export default defineComponent({
   props: ["tracksItems", "buttonAdd"],
+  data(){
+    return {
+      checkLogo,
+      allAlbumCheck:[] as  AlbumType[],
+    }
+  },
   methods: {
     addLibrary(track: AlbumType) {
+      this.allAlbumCheck.push(track);
       this.$emit("onTrack", track);
+    },
+    addAlbum(track: AlbumType){
+      //Check si l'ablbum à déjà été sauvegardé
+      const found = this.allAlbumCheck.find((album) => (album.name === track.name) && (album.url === track.url));
+      return found ? true:false;
     },
     //https://bobbyhadz.com/blog/javascript-convert-milliseconds-to-hours-minutes-seconds
     convertMsToTime(milliseconds: number) {
@@ -92,10 +106,18 @@ export default defineComponent({
   width: 48px;
   height: 48px;
 }
-.btn-add span {
+.btn-add:hover{
+  background: #1FDF64!important;
+  width: 50px;
+  height: 50px;
+}
+.btn-add img {
   color: #000000;
-  width: 48px;
-  height: 48px;
+  width: 15px;
+  height: 15px;
+}
+.none-btn{
+  display:none!important;
 }
 .tracks-items {
   display: flex;
@@ -127,6 +149,7 @@ export default defineComponent({
 }
 .card-resume {
   display: flex;
+  flex-direction: column;
   font-size: 0.875rem;
   line-height: 1rem;
   color: #6a6a6a;

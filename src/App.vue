@@ -21,11 +21,17 @@ import Navigator, { CHOICENAV } from "@/components/Navigator.vue";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 import type { AlbumType } from "./models/AlbumType";
+import { getAuth } from "./services/spotifyAuth";
+
 
 export default defineComponent({
   components: { Card, Search, AppHeader, Navigator, Library },
   data() {
     return { choice: CHOICENAV.SEARCH, enumChoiceNav: CHOICENAV };
+  },
+  mounted(){
+    //Credentials
+    getAuth();
   },
   methods: {
     //Envoie de la saisie à l'API

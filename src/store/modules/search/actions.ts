@@ -1,7 +1,9 @@
 import SearchService from "@/services/SearchService";
 
 const loadSearch = (context: any, search: string) => {
-  context.commit("setSearch", SearchService.getSearch(search));
+  SearchService.getSearch(search).then((response) => {
+    context.commit("setSearch", response);
+  });
 };
 
 export { loadSearch };

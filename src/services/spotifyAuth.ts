@@ -1,11 +1,9 @@
 import clientAPI from "./AxiosConfig";
-import CryptoJS from 'crypto-js';
+import axios from "axios";
+import qs from "qs";
 //TODO : A mettre dans le .env
-const client_id = "e5e4811acf954507b1b4a18856327089";
-const client_secret = "a2cdd952897946119a8c7c430bdf324c";
-const BASE64_ENCODED_AUTH_CODE = client_id + ":" + client_secret;
-
-
+const client_id = "";
+const client_secret = "";
 
 export async function getAuth() {
   //Récupération du code
@@ -24,23 +22,32 @@ export async function getAuth() {
       return res.request.responseURL;
     });
 }
-export async function getToken(code:string) {
+export async function getToken(code: string) {
   // récupération du token
-  
-  await clientAPI('https://accounts.spotify.com').post('/api/token',{
-    params:{
-      response_type: "token",
-      code:code,
-      grant_type: 'authorization_code',
-      redirect_uri: 'http://localhost:3000/',
+  const headers = {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    headers:{
-      'Accept':'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: 'Basic ' +  CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(BASE64_ENCODED_AUTH_CODE)),
+    auth: {
+      username: client_id,
+      password: client_secret,
     },
-  }).then(response=>{
-    return response.data.access_token;
+  };
 
-  })
+  // Data object.
+  const data = {
+    grant_type: "client_credentials",
+  };
+
+  // Make the request using the URL, query string, data, and headers.
+  const res = await axios.post(
+    "https://accounts.spotify.com/api/token",
+    qs.stringify(data),
+    headers
+  );
+
+  // Retrieve the access token from the response.
+  const access_token = res.data.access_token;
+  localStorage.setItem("access_token", access_token);
 }

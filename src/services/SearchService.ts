@@ -8,17 +8,20 @@ const params: any = {
 };
 
 export default class SearchService {
-  // getSearch(search: string) {
-  //   params.q = search;
-  //   return clientAPI(api, params).get("/search");
-  // },
-  public static getSearch(search: string) {
+  public static async getSearch(search: string) {
     params.q = search;
     //Call Search API
-    // const result = clientAPI(api, params).get("/search").then((response: any) => {
-    //   return response.data;
-    // });
+    const result = await clientAPI(api)
+      .get("/search", {
+        params: params,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      })
+      .then((response: any) => {
+        return response.data;
+      });
 
-    return mock;
+    return result;
   }
 }

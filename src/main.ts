@@ -5,8 +5,7 @@ import axios from "axios";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import dayjs from "dayjs";
-import router from './router'
-
+import router from "./router";
 
 dayjs().format();
 

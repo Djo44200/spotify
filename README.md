@@ -44,3 +44,7 @@ npm run build
 ```sh
 npm run lint
 ```
+### .ENV [ESLint](https://eslint.org/)
+```sh
+Créer un .env afin de mettre les variables SPOTIFY_API_ID et SPOTIFY_CLIENT_SECRET. 
+```

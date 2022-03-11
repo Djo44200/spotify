@@ -44,8 +44,6 @@ export default defineComponent({
         localStorage.setItem("code", url);
       }
       await getToken();
-      console.log(import.meta.env);
-
       this.$store.dispatch("search/loadSearch", search);
     },
     addToLibrairy(track: AlbumType) {

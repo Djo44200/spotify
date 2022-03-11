@@ -1,4 +1,5 @@
 import { Store } from "@/store"; // path to store file
+import VueRouter from "vue-router";
 
 declare module "*.vue" {
   import Vue from "vue";
@@ -11,6 +12,7 @@ declare module "qs";
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
     $store: Store;
+    $router: VueRouter;
   }
 }
 declare module "graphql/language/ast" {

@@ -21,7 +21,7 @@ import Navigator, { CHOICENAV } from "@/components/Navigator.vue";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 import type { AlbumType } from "./models/AlbumType";
-import { getAuth } from "./services/spotifyAuth";
+import { getAuth, getToken } from "./services/spotifyAuth";
 
 
 export default defineComponent({
@@ -29,14 +29,31 @@ export default defineComponent({
   data() {
     return { choice: CHOICENAV.SEARCH, enumChoiceNav: CHOICENAV };
   },
-  mounted(){
+  async created() {
     //Credentials
-    getAuth();
+
+    if (window.location.search.length === 0) {
+      const url = await getAuth();
+      window.location.href = url; 
+    }
+  
+  
+    
+    
   },
   methods: {
     //Envoie de la saisie à l'API
-    search(search: string) {
+    async search(search: string) {
+      if (this.$route.query.code) {
+        let url = (this.$route.query.code).toString();
+        localStorage.setItem('code', url);
+        await getToken(url);
+      }
+
       this.$store.dispatch("search/loadSearch", search);
+     
+       
+    
     },
     addToLibrairy(track: AlbumType) {
       this.$store.dispatch("library/saveAlbum", track);

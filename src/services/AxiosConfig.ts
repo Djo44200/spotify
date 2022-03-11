@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const clientAPI = (url: string, params?: any) =>
+const clientAPI = (url: string) =>
   axios.create({
     baseURL: url,
-    params: params,
     withCredentials: false,
   });
 

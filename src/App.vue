@@ -45,12 +45,13 @@ export default defineComponent({
     //Envoie de la saisie à l'API
     async search(search: string) {
       if (this.$route.query.code) {
+         this.$store.dispatch("search/loadSearch", search);
         let url = (this.$route.query.code).toString();
         localStorage.setItem('code', url);
         await getToken(url);
       }
 
-      this.$store.dispatch("search/loadSearch", search);
+     
      
        
     

@@ -1,8 +1,8 @@
 import clientAPI from "./AxiosConfig";
 import CryptoJS from 'crypto-js';
 //TODO : A mettre dans le .env
-const client_id = "";
-const client_secret = "";
+const client_id = "e5e4811acf954507b1b4a18856327089";
+const client_secret = "a2cdd952897946119a8c7c430bdf324c";
 const BASE64_ENCODED_AUTH_CODE = client_id + ":" + client_secret;
 
 

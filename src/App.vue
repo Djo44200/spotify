@@ -42,9 +42,9 @@ export default defineComponent({
       if (this.$route.query.code && !localStorage.getItem("access_token")) {
         let url = this.$route.query.code.toString();
         localStorage.setItem("code", url);
-        await getToken(url);
       }
-      console.log(import.meta.env.SPOTIFY_API_ID);
+      await getToken();
+      console.log(import.meta.env);
 
       this.$store.dispatch("search/loadSearch", search);
     },

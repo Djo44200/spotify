@@ -1,5 +1,4 @@
 import clientAPI from "./AxiosConfig";
-import mock from "../../mock/mock.json";
 const api = "https://api.spotify.com/v1";
 const params: any = {
   q: "",

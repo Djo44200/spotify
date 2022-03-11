@@ -1,9 +1,10 @@
 import clientAPI from "./AxiosConfig";
 import axios from "axios";
 import qs from "qs";
-//TODO : A mettre dans le .env
-const client_id = "";
-const client_secret = "";
+import ENV from "../../env/env.json";
+
+const client_id = ENV.VUE_APP_API_ID;
+const client_secret = ENV.VUE_APP_CLIENT_SECRET;
 
 export async function getAuth() {
   //Récupération du code
@@ -22,7 +23,7 @@ export async function getAuth() {
       return res.request.responseURL;
     });
 }
-export async function getToken(code: string) {
+export async function getToken() {
   // récupération du token
   const headers = {
     headers: {

@@ -15,9 +15,6 @@ declare module "@vue/runtime-core" {
     $router: VueRouter;
   }
 }
-declare module "graphql/language/ast" {
-  export type DocumentNode = any;
-}
 
 declare module "*.svg" {
   const content: any;

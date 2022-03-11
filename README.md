@@ -44,7 +44,13 @@ npm run build
 ```sh
 npm run lint
 ```
-### .ENV
+### ENV
 ```sh
-Créer un .env afin de mettre les variables SPOTIFY_API_ID et SPOTIFY_CLIENT_SECRET. 
+Créer un dossier env à la racine, puis créer un fichier env.json .Mettre les variables VUE_APP_API_ID et VUE_APP_CLIENT_SECRET. 
+```
+
+### SPOTIFY ACCESS [SPOTIFY](https://developer.spotify.com/documentation/general/guides/authorization/app-settings/)
+
+```sh
+Récupérer les accès 
 ```

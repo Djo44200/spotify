@@ -36,7 +36,7 @@
 import type { AlbumType } from "@/models/AlbumType";
 import dayjs from "dayjs";
 import { defineComponent } from "vue";
-import checkLogo from "@/assets/img/check-lg.svg";
+import checkLogo from "@/assets/check.svg";
 
 export default defineComponent({
   props: ["tracksItems", "buttonAdd"],
@@ -47,12 +47,13 @@ export default defineComponent({
     };
   },
   methods: {
+    // Ajout à la bibliothèque
     addLibrary(track: AlbumType) {
       this.allAlbumCheck.push(track);
       this.$emit("onTrack", track);
     },
     addAlbum(track: AlbumType) {
-      //Check si l'ablbum à déjà été sauvegardé
+      //Check si l'ablbum à déjà été sauvegardé - Si oui, suppression du check
       const found = this.allAlbumCheck.find(
         (album) => album.name === track.name && album.url === track.url
       );

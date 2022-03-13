@@ -4,7 +4,7 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          :class="{ active: choice === enumNav.SEARCH }"
+          :class="{ active: choiceRouter === enumNav.SEARCH }"
           @click="onSelect(enumNav.SEARCH)"
           >Recherche</a
         >
@@ -12,7 +12,7 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          :class="{ active: choice === enumNav.LIBRARY }"
+          :class="{ active: choiceRouter === enumNav.LIBRARY }"
           @click="onSelect(enumNav.LIBRARY)"
           >Bibliothèque</a
         >
@@ -22,19 +22,17 @@
 </template>
 
 <script lang="ts">
+import { CHOICENAV } from "@/models/RouterType";
 import { defineComponent } from "vue";
-export enum CHOICENAV {
-  SEARCH,
-  LIBRARY,
-}
+
 
 export default defineComponent({
+  props: ["choiceRouter"],
   data() {
-    return { enumNav: CHOICENAV, choice: CHOICENAV.SEARCH };
+    return { enumNav: CHOICENAV};
   },
   methods: {
     onSelect(choice: CHOICENAV) {
-      this.choice = choice;
       this.$emit("onChoiceSelected", choice);
     },
   },

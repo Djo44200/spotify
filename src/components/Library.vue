@@ -1,6 +1,5 @@
 <template>
   <div class="library-ctn">
-    <span class="title">BIBLIOTHEQUE</span>
     <card :buttonAdd="false" :tracksItems="lists" />
   </div>
 </template>
@@ -28,13 +27,5 @@ export default defineComponent({
   height: 100%;
   align-items: center;
   justify-content: center;
-}
-.title {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  margin-bottom: 2rem;
 }
 </style>

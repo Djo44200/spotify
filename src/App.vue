@@ -1,6 +1,6 @@
 <template>
-  <main class="main">
-    <navigator class="nav" @onChoiceSelected="choiceSelected" />
+    <router-view />
+    <!-- <navigator class="nav" @onChoiceSelected="choiceSelected" />
     <div class="container-ctn" v-if="enumChoiceNav.SEARCH === choice">
       <app-header :title="'DEV'" />
       <search @onSearch="search" />
@@ -12,48 +12,28 @@
     </div>
     <div class="container-ctn" v-else>
       <library :lists="libraryLists" />
-    </div>
-  </main>
+    </div> -->
 </template>
 <script lang="ts">
 import { Search, AppHeader, Card, Library } from "@/components";
-import Navigator, { CHOICENAV } from "@/components/Navigator.vue";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
-import type { AlbumType } from "./models/AlbumType";
-import { getAuth, getToken } from "./services/spotifyAuth";
+import { getAuth } from "./services/spotifyAuth";
 
 export default defineComponent({
-  components: { Card, Search, AppHeader, Navigator, Library },
+  components: { Card, Search, AppHeader, Library },
 
   data() {
-    return { choice: CHOICENAV.SEARCH, enumChoiceNav: CHOICENAV };
+    return {  };
   },
   async created() {
     //Credentials
-
     if (window.location.search.length === 0) {
       const url = await getAuth();
       window.location.href = url;
     }
   },
-  methods: {
-    //Envoie de la saisie à l'API
-    async search(search: string) {
-      if (this.$route.query.code && !localStorage.getItem("access_token")) {
-        let url = this.$route.query.code.toString();
-        localStorage.setItem("code", url);
-      }
-      await getToken();
-      this.$store.dispatch("search/loadSearch", search);
-    },
-    addToLibrairy(track: AlbumType) {
-      this.$store.dispatch("library/saveAlbum", track);
-    },
-    choiceSelected(choice: CHOICENAV) {
-      this.choice = choice;
-    },
-  },
+  methods: {},
   computed: {
     ...mapGetters({
       tracksItems: "search/getAlbums",
@@ -72,7 +52,7 @@ export default defineComponent({
   background-color: #181818;
   color: white;
 }
-.main {
+/* .main {
   display: flex;
   width: 100%;
   min-height: 100%;
@@ -97,5 +77,5 @@ export default defineComponent({
   align-items: center;
   font-size: 24px;
   margin-bottom: 2rem;
-}
+} */
 </style>

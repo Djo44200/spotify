@@ -25,6 +25,7 @@ import { getAuth, getToken } from "./services/spotifyAuth";
 
 export default defineComponent({
   components: { Card, Search, AppHeader, Navigator, Library },
+
   data() {
     return { choice: CHOICENAV.SEARCH, enumChoiceNav: CHOICENAV };
   },

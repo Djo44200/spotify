@@ -1,4 +1,3 @@
-import clientAPI from "./AxiosConfig";
 import axios from "axios";
 import qs from "qs";
 import ENV from "../../env/env.json";
@@ -8,20 +7,20 @@ const client_secret = ENV.VUE_APP_CLIENT_SECRET;
 
 export async function getAuth() {
   //Récupération du code
-  return await clientAPI("https://accounts.spotify.com")
-    .get("/authorize", {
-      params: {
+  const data = {
         response_type: "code",
         client_id: client_id,
         scope: "user-read-private user-read-email",
         redirect_uri: "http://localhost:3000/",
         state: "refdfwSdfertg",
         show_dialog: true,
-      },
-    })
-    .then((res) => {
-      return res.request.responseURL;
-    });
+  }
+  return await axios.get(
+    "https://accounts.spotify.com/authorize",
+    {params:data}
+  ).then(res=>{
+    return res.request.responseURL;
+  });
 }
 export async function getToken() {
   // récupération du token

@@ -8,19 +8,18 @@ const client_secret = ENV.VUE_APP_CLIENT_SECRET;
 export async function getAuth() {
   //Récupération du code
   const data = {
-        response_type: "code",
-        client_id: client_id,
-        scope: "user-read-private user-read-email",
-        redirect_uri: "http://localhost:3000/",
-        state: "refdfwSdfertg",
-        show_dialog: true,
-  }
-  return await axios.get(
-    "https://accounts.spotify.com/authorize",
-    {params:data}
-  ).then(res=>{
-    return res.request.responseURL;
-  });
+    response_type: "code",
+    client_id: client_id,
+    scope: "user-read-private user-read-email",
+    redirect_uri: "http://localhost:3000/",
+    state: "refdfwSdfertg",
+    show_dialog: true,
+  };
+  return await axios
+    .get("https://accounts.spotify.com/authorize", { params: data })
+    .then((res) => {
+      return res.request.responseURL;
+    });
 }
 export async function getToken() {
   // récupération du token

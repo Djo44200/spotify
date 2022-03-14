@@ -25,11 +25,10 @@
 import { CHOICENAV } from "@/models/RouterType";
 import { defineComponent } from "vue";
 
-
 export default defineComponent({
   props: ["choiceRouter"],
   data() {
-    return { enumNav: CHOICENAV};
+    return { enumNav: CHOICENAV };
   },
   methods: {
     onSelect(choice: CHOICENAV) {

@@ -1,7 +1,6 @@
 enum CHOICENAV {
-    SEARCH,
-    LIBRARY,
-  }
+  SEARCH,
+  LIBRARY,
+}
 
-
-  export {CHOICENAV}
+export { CHOICENAV };

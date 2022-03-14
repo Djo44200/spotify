@@ -67,7 +67,7 @@ export default defineComponent({
       this.$store.dispatch("library/removeAlbum", track);
     },
     addBtn(track: AlbumType): boolean {
-      //Check si l'ablbum à déjà été sauvegardé - Si oui, suppression du check
+      //Check si l'ablbum à déjà été sauvegardé
       const found = this.libraryAlbum.find(
         (album: AlbumType) =>
           album.name === track.name && album.url === track.url

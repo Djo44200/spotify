@@ -10,10 +10,18 @@
         v-if="buttonAdd"
         type="button"
         class="btn btn-add"
-        :class="{ 'none-btn': noneBtn }"
         @click="add(object)"
       >
-        <img :src="checkLogo" alt="Bootstrap" width="32" height="32" />
+        <img :src="addLogo" alt="Bootstrap" width="32" height="32" />
+      </button>
+      <!-- Bouton de suppression -->
+      <button
+        v-if="buttonRemove"
+        type="button"
+        class="btn btn-add"
+        @click="remove(object)"
+      >
+        <img :src="removeLogo" alt="Bootstrap" width="32" height="32" />
       </button>
       <div class="card-body">
         <p class="card-title">
@@ -30,7 +38,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import checkLogo from "@/assets/check.svg";
+import addLogo from "@/assets/add.svg";
+import removeLogo from "@/assets/remove.svg";
 
 export default defineComponent({
   props: [
@@ -41,17 +50,21 @@ export default defineComponent({
     "resumeOne",
     "resumeTwo",
     "object",
-    "noneBtn",
+    "buttonRemove"
   ],
   data() {
     return {
-      checkLogo,
+      addLogo,removeLogo
     };
   },
   methods: {
     // Ajout à la bibliothèque
     add(object: object) {
       this.$emit("onAdd", object);
+    },
+    // Ajout à la bibliothèque
+    remove(object: object) {
+      this.$emit("onRemove", object);
     },
   },
 });
@@ -82,9 +95,6 @@ export default defineComponent({
   color: #000000;
   width: 15px;
   height: 15px;
-}
-.none-btn {
-  display: none !important;
 }
 .card {
   display: flex;

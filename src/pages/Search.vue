@@ -14,13 +14,14 @@
           :key="index"
           :url="track.url"
           :urlImg="track.images[1].url"
-          :buttonAdd="true"
+          :buttonAdd="addBtn(track)"
+          :buttonRemove="!addBtn(track)"
           :title="track.name"
           :resumeOne="resumeOne(track.duree)"
           :resumeTwo="resumeTwo(track.date)"
           :object="track"
-          :noneBtn="checkActiveBtn(track)"
           @onAdd="addToLibrairy"
+          @onRemove="removeToLibrairy"
         />
       </div>
     </div>
@@ -62,14 +63,16 @@ export default defineComponent({
     addToLibrairy(track: AlbumType) {
       this.$store.dispatch("library/saveAlbum", track);
     },
-    checkActiveBtn(track: AlbumType): boolean {
+    removeToLibrairy(track:AlbumType){
+      this.$store.dispatch("library/removeAlbum", track);
+    },
+    addBtn(track: AlbumType): boolean {
       //Check si l'ablbum à déjà été sauvegardé - Si oui, suppression du check
       const found = this.libraryAlbum.find(
         (album: AlbumType) =>
           album.name === track.name && album.url === track.url
       );
-
-      return found ? true : false;
+      return found ? false : true;
     },
     resumeOne(duree: number): string {
       return "Durée : " + this.convertMsToTime(duree);

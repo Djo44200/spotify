@@ -12,5 +12,11 @@ const setAlbumToLibrary = (state: LibraryStateProps, album: AlbumType) => {
     state.lists.push(album);
   }
 };
+const setRemoveAlbumToLibrary = (state: LibraryStateProps, album: AlbumType) => {
+  const index = state.lists.findIndex(function(o){
+    return o.name === album.name && o.url === album.url;
+})
+if (index !== -1) state.lists.splice(index, 1);
 
-export { setAlbumToLibrary };
+};
+export { setAlbumToLibrary,setRemoveAlbumToLibrary };
